@@ -1,0 +1,46 @@
+<!-- Disclaimer: I hacked this together in a few mins - I know it's terrible -->
+
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+
+<style>
+  html, body {
+    background: #43aaff;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    color: white;
+  }
+  h1, h2, h3 {
+    font-size: 6em;
+  }
+  pre {
+    font-size: 14em;
+  }
+</style>
+
+<h1>CovHack LHD 2018</h1>
+<pre id="demo"></pre>
+
+<script>
+
+function f (number) {
+  return ("00" + number).slice(-2)
+}
+var countDownDate = new Date("Dec 1, 2018 20:30:00:00").getTime()
+
+var x = setInterval(function() {
+  var now = new Date().getTime()
+
+  var distance = countDownDate - now
+
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+  document.getElementById("demo").innerHTML = `${f(hours)}:${f(minutes)}:${f(seconds)}`
+
+  if (distance < 0) {
+    clearInterval(x)
+    document.getElementById("demo").innerHTML = "STOP HACKING!"
+  }
+}, 1000)
+</script>
